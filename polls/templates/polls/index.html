@@ -1,11 +1,28 @@
-{% if latest_question_list %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
 
-    <ul>
-        {% for question in latest_question_list %}
-            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-        {% endfor %}
-    </ul>
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1> Questões </h1>
+        {% if latest_question_list %}
+            <ul>
+                {% for question in latest_question_list %}
+                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                {% endfor %}
+            </ul>
 
-{% else %}
-    <p>No polls are available</p>
-{% endif %}
+            {% else %}
+                <p>No polls are available</p>
+            {% endif %}
+        </main>
+    </body>
+</html>
