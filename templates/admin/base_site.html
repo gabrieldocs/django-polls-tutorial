@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}  {% load static %} {% block branding %}
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">Santos Workers</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super}}
+    <link rel="stylesheet" href="{% static 'admin/css/adminstyle.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        #header { 
+            background-color: navy;            
+            font-family: 'Roboto', sans-serif !important;           
+        }
+        
+    </style>
+
+<style>
+    .userway { margin-bottom: 48px !important; right: 16px;}
+    </style>
+      <script type="text/javascript">
+        var _userway_config = {
+          account: 'QxicWCMsKX'
+        };
+    </script>
+    <script type="text/javascript" src="https://cdn.userway.org/widget.js"></script>
+{% endblock %}
