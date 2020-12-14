@@ -1,9 +1,21 @@
-<h1> {{ question.question_text }} </h1>
 
-<ul>
-    {% for choice in question.choice_set.all %}
-        <li> {{choice.choice_text}} -- {{ choice.votes}} vote{{ choice.votes|pluralize}} </li>
-    {% endfor %} 
-</ul>
+{% extends 'polls/base.html' %}
+{% block content %}
+<main class="container">
+        
+    <h5 class="text-success">RESULTADO</h5>
+    <h1> 
+        <strong>
+            {{ question.question_text }} 
+        </strong>
+    </h1>
+    <button class="btn btn-muted btn-sm">QUESTÃO</button>
+    <ul>
+        {% for choice in question.choice_set.all %}
+            <li> {{choice.choice_text}} - <span class="text-success"> {{ choice.votes}} voto{{ choice.votes|pluralize}} </span></li>
+        {% endfor %} 
+    </ul>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again</a>
+    <a href="{% url 'polls:detail' question.id %}" class="btn btn-success">Votar de novo</a>
+</main>
+{% endblock %}

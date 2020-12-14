@@ -1,28 +1,30 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/bootstrap.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}">
+{% extends 'polls/base.html' %}
+{% block content %}
+    <main class="container mt-3 mb-3">
 
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <h1> Questões </h1>
+        <h5 class="text-success">VOTE!</h5>
+        <h1><strong> Enquetes disponíveis </strong></h1>
+        <p> Selecione uma das opções abaixo para começar a votar </p>
         {% if latest_question_list %}
-            <ul>
+            <div class="row">
                 {% for question in latest_question_list %}
-                    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3>Enquete!</h3>
+                                <p>{{ question.question_text }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{% url 'polls:detail' question.id %}" class="btn btn-success btn-block">Votar agora</a>
+                            </div>
+                        </div>                
+                    </div>    
                 {% endfor %}
-            </ul>
+            </div>
 
             {% else %}
                 <p>No polls are available</p>
             {% endif %}
         </main>
-    </body>
-</html>
+
+{% endblock %}
