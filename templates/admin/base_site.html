@@ -4,20 +4,9 @@
 
 {% block nav-global %}{% endblock %}
 
-{% block extrastyle %}
-    {{ block.super}}
-    <link rel="stylesheet" href="{% static 'admin/css/adminstyle.css' %}">
+{% block extrastyle %}    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-        #header { 
-            background-color: navy;            
-            font-family: 'Roboto', sans-serif !important;           
-        }
-        
-    </style>
-
-<style>
-    .userway { margin-bottom: 48px !important; right: 16px;}
+        .userway { margin-bottom: 48px !important; right: 16px;}
     </style>
       <script type="text/javascript">
         var _userway_config = {
@@ -25,4 +14,6 @@
         };
     </script>
     <script type="text/javascript" src="https://cdn.userway.org/widget.js"></script>
-{% endblock %}
+{% endblock %} 
+
+{% include "footer.html" %}
